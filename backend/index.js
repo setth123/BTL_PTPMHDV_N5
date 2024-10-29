@@ -8,7 +8,7 @@ app.use('/backend',router);
 mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
     console.log('yes');
-    app.listen(4000,()=>{
+    app.listen(4000,'0.0.0.0',()=>{
         console.log("success");
     })
 })
