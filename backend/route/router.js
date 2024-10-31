@@ -44,7 +44,7 @@ router.get('/carver/:id', async(req,res)=>{
         res.status(500).json({message: 'Server error'});
     }
 });
-
+//get list interest rate 
 router.get('/rate',async(req,res)=>{
     try {
         const rates = await InterestRate.find();
@@ -53,7 +53,7 @@ router.get('/rate',async(req,res)=>{
         res.status(500).json({message: 'Error'});
     }
 });
-
+//get interest rate by id
 router.get('/rate/:id',async(req,res)=>{
     try {
         const rate = await InterestRate.findById(req.params.id);
@@ -63,7 +63,7 @@ router.get('/rate/:id',async(req,res)=>{
         res.status(500).json({message: 'Server error'});
     }
 });
-
+//get list car version from car name
 router.get('/carname/carvername', async(req,res)=>{
     try {
         const allCars = await Car.find();
