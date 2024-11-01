@@ -12,26 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Setup SSH Agent and Add Key
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
-    
-    - name: Deploy to EC2
-      env: 
-        HOST_NAME: ${{secrets.EC2_HOST}}
+    - name: Deploy to AWS EC2
       run: |
-        ssh -o StrictHostKeyChecking=no $HOST_NAME << 'EOF'
-          # Chuyển đến thư mục ứng dụng
-          cd /BTL_PTPMHDV_N6
-
-          # Cập nhật mã nguồn
-          git pull origin main
-          cd backend
-          # Cài đặt lại dependencies
-          npm install
-
-          # Khởi động lại ứng dụng
-          pm2 restart index.js || node index.js
-        EOF
+        ssh -i ${{ secrets.EC2_PRIVATE_KEY }} ${{ secrets.EC2_HOST }} "cd 
+        /BTL_PTPMHDV_N6 && git pull origin main && npm install && pm2 restart index.js 
+        && echo 'Update successfully'"
+     
