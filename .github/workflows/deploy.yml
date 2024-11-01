@@ -17,10 +17,12 @@ jobs:
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
-        host-name: ${{secrets.EC2_HOST}}
+    
     - name: Deploy to EC2
+      env: 
+        HOST_NAME: ${{secrets.EC2_HOST}}
       run: |
-        ssh -o StrictHostKeyChecking=no -i ssh-private-key host-name << 'EOF'
+        ssh -o StrictHostKeyChecking=no $HOST_NAME << 'EOF'
           # Chuyển đến thư mục ứng dụng
           cd /BTL_PTPMHDV_N6
 
