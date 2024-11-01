@@ -1,0 +1,35 @@
+name: Deploy Node.js App to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup SSH Agent and Add Key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
+        host-name: ${{secrets.EC2_HOST}}
+    - name: Deploy to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ssh-private-key host-name << 'EOF'
+          # Chuyển đến thư mục ứng dụng
+          cd /BTL_PTPMHDV_N6
+
+          # Cập nhật mã nguồn
+          git pull origin main
+          cd backend
+          # Cài đặt lại dependencies
+          npm install
+
+          # Khởi động lại ứng dụng
+          pm2 restart your-app-name || node index.js
+        EOF
