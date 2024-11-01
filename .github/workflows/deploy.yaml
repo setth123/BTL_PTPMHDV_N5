@@ -33,5 +33,5 @@ jobs:
           npm install
 
           # Khởi động lại ứng dụng
-          pm2 restart your-app-name || node index.js
+          pm2 restart index.js || node index.js
         EOF
