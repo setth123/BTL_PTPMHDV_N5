@@ -16,6 +16,9 @@ const InterestRateSchema=new mongoose.Schema({
     MaxTerm:{
         type:Number,
         required:true,
+    },
+    viewed:{
+        type:Number,
     }
 }, { timestamps: true })
 const InterestRate=mongoose.model("InterestRate",InterestRateSchema);

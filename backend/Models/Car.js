@@ -7,6 +7,9 @@ const CarSchema=new mongoose.Schema({
     },
     pictureURL:{
         type:String,
+    },
+    viewed:{
+        type:Number
     }
 })
 const Car=mongoose.model('Car',CarSchema);

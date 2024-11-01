@@ -43,6 +43,9 @@ const carVersionScema=new mongoose.Schema({
     },
     acceleration:{
         type:Number
+    },
+    viewed:{
+        type:Number,
     }
 })
 const carVersion=mongoose.model('CarVersion',carVersionScema);
