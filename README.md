@@ -11,5 +11,5 @@ Lấy thông tin từng ngân hàng: http://34.199.134.219/backend/rate/id của
 Lấy danh sách các phiên bản xe của từng dòng xe: http://34.199.134.219/backend/carname/carvername
 
 Mỗi đường dẫn sẽ trả về dữ liệu dạng json. Chỉ cần fetch dữ liệu dạng json về từ link này.
-Cần nhóm trưởng mở server để truy cập.
-                     
+Cần nhóm trưởng mở server để truy cap
+______________________________
