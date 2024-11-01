@@ -12,3 +12,4 @@ Lấy danh sách các phiên bản xe của từng dòng xe: http://34.199.134.2
 
 Mỗi đường dẫn sẽ trả về dữ liệu dạng json. Chỉ cần fetch dữ liệu dạng json về từ link này.
 Cần nhóm trưởng mở server để truy cập.
+                     
