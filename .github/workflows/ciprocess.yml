@@ -21,12 +21,12 @@ jobs:
           ssh-keyscan -H 34.199.134.219 >> ~/.ssh/known_hosts
     - name: Deploy to EC2
       run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@34.199.134.219
-          cd BTL_PTPMHDV_N6 &&
-          git pull origin main
-          cd backend
-          npm install 
-          pm2 restart index.js
-          '
+          ssh -i ~/.ssh/id_rsa ubuntu@34.199.134.219 "
+            cd BTL_PTPMHDV_N6 || { echo 'Failed to change directory'; exit 1; } &&
+            git pull origin main || { echo 'Failed to pull from git'; exit 1; } &&
+            cd backend || { echo 'Failed to change to backend directory'; exit 1; } &&
+            npm install || { echo 'npm install failed'; exit 1; } &&
+            pm2 restart index.js || { echo 'Failed to restart pm2'; exit 1; }
+          "
 
      
