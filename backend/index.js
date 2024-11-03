@@ -9,9 +9,9 @@ import interestRateByIdRouter from "./route/interestRateByIdRouter.js";
 import carVerByCarIdRouter from "./route/carVerByCarIdRouter.js";
 import cors from 'cors'
 const app=express();
+app.use(cors());
 app.use('/backend',rateRouter,carRouter,carVerRouter,
                    carByIdRouter,carVerByIdRouter,interestRateByIdRouter,carVerByCarIdRouter);
-app.use(cors());
 mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
     console.log('yes');
