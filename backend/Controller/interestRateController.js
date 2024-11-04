@@ -2,10 +2,21 @@ import InterestRate from "../Models/InterestRate.js";
 
 export const getInterestRates = async(req,res)=>{
     try {
-        const rates = await InterestRate.find();
-        const filteredRateList = rates.filter(rate => Object.values(rate.toObject()).every(value => value !== 0));
-        res.status(200).json(filteredRateList);
+        const rates = await InterestRate.aggregate([
+            {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $ne: ["$MaxPercent", 0] },
+                      { $ne: ["$MaxTerm", 0] },
+                      { $ne: ["$Rate", 0] },
+                    ],
+                  },
+                },
+              },
+        ]);
+        res.status(200).json(rates);
     } catch (error) {
-        res.status(500).json({message: 'export error'});
+        res.status(500).json({message: error.message});
     }
 }
