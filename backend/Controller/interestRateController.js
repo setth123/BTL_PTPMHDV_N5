@@ -18,5 +18,6 @@ export const getInterestRates = async(req,res)=>{
         res.status(200).json(rates);
     } catch (error) {
         res.status(500).json({message: error.message});
+        
     }
 }
