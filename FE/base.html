@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard </title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="car-outline"></ion-icon>
+                        </span>
+                        <span class="title">Car Management</span>
+                    </a>
+                </li>
+
+                <li onclick="loadTemplate('carmanager'); loadCars();">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li onclick="loadTemplate('interestmanager'); loadBanks();"> 
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="title">Lãi xuất ngân hàng</span>
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="Chart.html">
+                        <span class="icon">
+                            <ion-icon name="Bar-chart"></ion-icon>
+                        </span>
+                        <span class="title">Chart</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" id="search-box" placeholder="Search by Car Name or Bank Name" oninput="filterCarsAndBanks()" "/>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Content Block -->
+            <div id="content"></div>
+
+            <!-- Template Car Management -->
+            <template id="carmanager">
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Car Management</h2>
+                        </div>
+                        <div style="position: relative;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>STT</td>
+                                        <td>ID</td>
+                                        <td>Dòng xe</td>
+                                        <td>Ảnh</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="car-table-body">
+                                    
+                                </tbody>
+                            </table>
+                            <span id="car-sort-icon" onclick="sortCarTable()" style="cursor: pointer; position: absolute; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon for Car Name -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div id="car-details" class="modal">
+                </div>
+            
+            </template>
+
+            
+            <!-- template interest management  -->
+            <template id="interestmanager">
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Interest Management</h2>
+                        </div>
+                        <div style="position: relative;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>STT</td>
+                                        <td>ID</td>
+                                        <td>
+                                            Tên ngân hàng
+                                            <span onclick="sortBankTable()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
+                                        </td>
+                                        <td>Tỷ lệ tối đa</td>
+                                        <td>Thời gian tối đa</td>
+                                        <td>Tỷ lệ
+                                            <span onclick="sortBankTableRate()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody id="car-table-body">
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+        </div>
+        
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/script.js"></script>
+   
+    
+
+
+</body>
+
+</html>
