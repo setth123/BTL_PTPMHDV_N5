@@ -3,7 +3,7 @@ name: Deploy Node.js App to EC2
 on:
   push:
     branches:
-      - main
+      - backend
 
 jobs:
   deploy:
