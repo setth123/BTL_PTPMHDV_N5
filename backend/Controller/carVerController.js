@@ -15,7 +15,7 @@ export const getCarVers = async(req,res)=>{
 
         res.status(200).json(filteredCarVers);
     } catch (error) {
-        res.status(500).json({message: 'export error'})
+        res.status(500).json({message: error.message})
     }
 }
 
@@ -34,6 +34,6 @@ export const getCarVerbyID = async(req,res)=>{
 
         res.status(200).json(carverObject);
     } catch (error) {
-        res.status(500).json({message: 'export error'});
+        res.status(500).json({message: error.message});
     }
 }

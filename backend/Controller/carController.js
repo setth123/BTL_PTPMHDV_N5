@@ -16,7 +16,7 @@ export const getCars = async(req,res)=>{
 
         res.status(200).json(filteredCars);
     } catch (error) {
-        res.status(500).json({message: 'export error'});
+        res.status(500).json({message: error.message});
     }
 }
 
@@ -35,7 +35,7 @@ export const getCarbyID = async(req,res)=>{
 
         res.status(200).json(carObject);
     } catch (error) {
-        res.status(500).json({message: 'export error'});
+        res.status(500).json({message: error.message});
     }
 }
 
