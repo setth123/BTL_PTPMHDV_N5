@@ -25,6 +25,7 @@ mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mo
     app.listen(4000,'0.0.0.0', ()=>{
         console.log("success");
     })
+    console.log(await getDataService('CarVersion',{price:999}))
 })
 .catch((err)=>{
     console.log(err.message);

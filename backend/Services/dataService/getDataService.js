@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-
 const getDataService=async(tableName,condition={})=>{
     try{
         const Model=mongoose.model(tableName);
@@ -11,5 +10,4 @@ const getDataService=async(tableName,condition={})=>{
         return null;
     }
 }
-console.log(Object.keys(mongoose.models));
 export default getDataService;
