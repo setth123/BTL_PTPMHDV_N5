@@ -4,8 +4,7 @@ import jwt from "jsonwebtoken";
 
 
 const JWT_Secret="Sep21th2thousand4";
-export const login=async(req,res)=>{
-    const {username,password}=req.body;
+const loginService=async(username,password)=>{
     try{
         const admin=await Admin.findOne({username});
         if(!admin)return res.status(400).send("Invalid username or password");
@@ -17,9 +16,11 @@ export const login=async(req,res)=>{
             {adminId:admin._id,username:admin.username},
             JWT_Secret
         )
-        if(token) return res.status(200).json({token});
+        return token;
     }
     catch(err){
-        res.status(500).json({message:err.message});
+        return {error:err.message};
     }
 }
+
+export default loginService;

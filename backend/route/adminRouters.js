@@ -1,6 +1,15 @@
 import express from "express";
-import { login } from "../Controller/adminController.js";
+import loginService from "../Services/authenService/loginServices.js";
 
 const adminRouters=express.Router();
-adminRouters.post('/login',login);
+adminRouters.post('/',async(req,res)=>{
+    const {username,password}=req.body;
+    try{
+        const token=await loginService(username,password);
+        return res.status(200).json(token);
+    }
+    catch(err){
+        return res.status(500).json(err.message);
+    }
+});
 export default adminRouters;
