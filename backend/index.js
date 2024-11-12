@@ -6,7 +6,6 @@ import cors from 'cors';
 import carVerRouters from "./route/carVerRouters.js";
 import adminRouters from "./route/adminRouters.js";
 import verifyToken from "./middlewares/verify.js";
-import getDataService from "./Services/dataService/getDataService.js";
 
 const app=express();
 app.use(cors());

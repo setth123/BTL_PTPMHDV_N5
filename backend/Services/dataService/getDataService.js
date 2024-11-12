@@ -11,5 +11,4 @@ const getDataService=async(tableName,condition={})=>{
         return null;
     }
 }
-console.log(Object.keys(mongoose.models));
 export default getDataService;
