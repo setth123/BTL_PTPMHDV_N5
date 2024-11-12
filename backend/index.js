@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 //verifyToken to verify admin before doing any actions
 app.use('/rate',verifyToken,rateRouter);
-app.use('/car',carRouter);
+app.use('/car',verifyToken,carRouter);
 app.use('/carVer',verifyToken,carVerRouters);
 app.use('/admin',adminRouters);
 
