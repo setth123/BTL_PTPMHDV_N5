@@ -6,8 +6,6 @@ import cors from 'cors';
 import carVerRouters from "./route/carVerRouters.js";
 import adminRouters from "./route/adminRouters.js";
 import verifyToken from "./middlewares/verify.js";
-import Admin from "./Models/Admin.js";
-import bcrypt from "bcrypt";
 const app=express();
 app.use(cors());
 
@@ -25,7 +23,6 @@ mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mo
     app.listen(4000,'0.0.0.0', ()=>{
         console.log("success");
     })
-    
 })
 .catch((err)=>{
     console.log(err.message);
