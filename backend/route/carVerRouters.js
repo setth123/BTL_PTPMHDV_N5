@@ -2,7 +2,7 @@ import express from "express";
 import carVer from "../Models/CarVersion.js";
 import editRecordService from "../Services/dataService/editRecordService.js";
 import getDataService from "../Services/dataService/getDataService.js";
-
+import delRecordService from "../Services/dataService/delRecordService.js"
 const carVerRouter=express.Router();
 
 carVerRouter.get('/',async(req,res)=>{
@@ -44,4 +44,23 @@ carVerRouter.put('/editcarver', async(req,res)=>{
         res.status(500).json({message: error.message});
     }
 })
+// xóa carver theo id car 
+carVerRouter.delete('/Car/:carID', async (req, res) => {
+    const carID = req.params.carID; // Lấy carID từ params
+    try {
+        // Gọi hàm xóa với carID
+        const deletedRecord = await delRecordService('CarVersion', carID);
+        // Kiểm tra xem có bản ghi nào bị xóa không
+        if (!deletedRecord) {
+            return res.status(404).json({ message: `Không tìm thấy phiên bản xe với ID ${carID}` });
+        }
+        // Trả về thông báo thành công
+        return res.status(200).json({ message: "Phiên bản xe đã được xóa thành công", deletedRecord });
+        
+    } catch (error) {
+        // Xử lý lỗi
+        return res.status(500).json({ message: error.message });
+    }
+});
+
 export default carVerRouter;
