@@ -24,7 +24,7 @@ rateRouters.get('/:id',async(req,res)=>{
     }
 });
 
-rateRouters.put('/editrate', async(req,res)=>{
+rateRouters.put('/editrate/:tableName/:id', async(req,res)=>{
     try {
         const { tableName, id } = req.params;
         const newData = req.body;

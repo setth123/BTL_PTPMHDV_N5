@@ -34,7 +34,7 @@ carVerRouter.get('/Car/:carID',async(req,res)=>{
     }
 })
 
-carVerRouter.put('/editcarver', async(req,res)=>{
+carVerRouter.put('/editcarver/:tableName/:id', async(req,res)=>{
     try {
         const { tableName, id } = req.params;
         const newData = req.body;
