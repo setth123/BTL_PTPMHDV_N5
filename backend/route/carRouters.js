@@ -47,4 +47,19 @@ carRouter.delete('/:id', async (req, res) => {
       return res.status(500).json({ message: error.message });
   }
 });
+
+carRouter.post('/', async (req, res) => {
+    try {
+        const newCar = req.body; // Dữ liệu từ form được gửi lên từ client
+        const result = await addDataService('Car', newCar);
+        
+        if (result) {
+            return res.status(201).json({ message: 'Dữ liệu được thêm thành công', data: result });
+        } else {
+            return res.status(500).json({ message: 'Thêm dữ liệu thất bại' });
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+});
 export default carRouter;
