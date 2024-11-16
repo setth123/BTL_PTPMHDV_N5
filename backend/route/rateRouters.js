@@ -52,4 +52,18 @@ rateRouters.delete('/:id', async (req, res) => {
         return res.status(500).json({ message: `Error deleting record: ${error.message}` });
     }
 });
+rateRouters.post('/', async (req, res) => {
+    try {
+        const newRate = req.body; // Dữ liệu từ form được gửi lên từ client
+        const result = await addDataService('InterestRate', newRate);
+        
+        if (result) {
+            return res.status(201).json({ message: 'Dữ liệu được thêm thành công', data: result });
+        } else {
+            return res.status(500).json({ message: 'Thêm dữ liệu thất bại' });
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+});
 export default rateRouters;
