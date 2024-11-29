@@ -1,0 +1,26 @@
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;  /* Chữ màu trắng */
+    border-bottom: 2px solid #ddd;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;  /* Canh giữa biểu đồ */
+    align-items: center;      /* Canh giữa theo chiều dọc */
+    width: 48%;
+    height: 300px;
+    background-color: #ffffff; /* Nền trắng cho biểu đồ */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0099b762; /* Viền xanh biển cho biểu đồ */
+}
+
+.car-management {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
