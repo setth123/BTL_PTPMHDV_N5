@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard </title>
+    <title>Admin Dashboard </title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/base.css">
-    <link rel ="stylesheet" href="assets/css/content.css">
+    <link rel="stylesheet" href="assets/css/chart.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- ======= Chars ====== -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             const token=localStorage.getItem('adminToken');
@@ -24,7 +27,8 @@
         }
     </script>
 </head>
-<body >
+
+<body>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
@@ -57,8 +61,8 @@
                 </li>
 
                 
-                <li>
-                    <a href="Chart.html">
+                <li onclick="loadTemplate('chart'); creatChart();">
+                    <a> 
                         <span class="icon">
                             <ion-icon name="Bar-chart"></ion-icon>
                         </span>
@@ -77,15 +81,15 @@
 
                 <div class="search">
                     <label>
-                        <input type="text" id="search-box" placeholder="Search by Car Name or Bank Name" oninput="filterCarsAndBanks()" />
+                        <input type="text" id="search-box" placeholder="Search by Car Name or Bank Name" oninput="filterCarsAndBanks()" "/>
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
+                    
                 </div>
-                <div onclick="logout()" style="margin-left: 5%;width:10%;cursor: pointer;">
-                    <img src="assets/imgs/logout-svgrepo-com.svg" alt="logout" width="30%"/>
+                <div onclick="logout()" style="margin-left: 5%; width: 10%; cursor: pointer; text-align: center;">
+                    <i class="material-icons" style="font-size: 24px;">logout</i>
                 </div>
             </div>
-
             <!-- Content Block -->
             <div id="content"></div>
 
@@ -225,18 +229,16 @@
                                 <thead>
                                     <tr>
                                         <td>STT</td>
-                                        <td style="text-align: center;">ID</td>
+                                        <td>ID</td>
                                         <td>Dòng xe</td>
                                         <td>Ảnh</td>
-                                        <td>Xóa</td>
-                                        <td>Sửa</td>
                                     </tr>
                                 </thead>
                                 <tbody id="car-table-body">
                                     
                                 </tbody>
                             </table>
-                            
+                            <span id="car-sort-icon" onclick="sortCarTable()" style="cursor: pointer; position: absolute; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon for Car Name -->
                         </div>
                         
                     </div>
@@ -244,8 +246,10 @@
 
                 <div id="car-details" class="modal">
                 </div>
-            
+
             </template>
+
+            
             <!-- template interest management  -->
             <template id="interestmanager">
                 <div class="details">
@@ -259,7 +263,7 @@
                                 <thead>
                                     <tr>
                                         <td>STT</td>
-                                        <td style="text-align: center;">ID</td>
+                                        <td>ID</td>
                                         <td>
                                             Tên ngân hàng
                                             <span onclick="sortBankTable()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
@@ -269,33 +273,45 @@
                                         <td>Tỷ lệ
                                             <span onclick="sortBankTableRate()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
                                         </td>
-                                        <td>Xóa</td>
-                                        <td>Sửa</td>
                                     </tr>
                                 </thead>
                                 <tbody id="car-table-body">
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
             </template>
             
+            <template id="chart">
+                <h2>Bank Interest Rates Chart</h2>
+                <canvas id="interestRateChart" width="400" height="200"></canvas>
+            </template>
+
         </div>
     </div>
-
- <!--Overlay-->
- <div id="overlay" style="display: none;"></div>
+     <!--Overlay-->
+     <div id="overlay" style="display: none;"></div>
 
     <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src ="assets/js/main.js"></script>
-    <script src="assets/js/addModal.js"></script>
 
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/templateLoader.js"></script>
+    <script src="assets/js/carFunctions.js"></script>
+    <script src="assets/js/bankFunctions.js"></script>
+    <script src="assets/js/filterFunctions.js"></script>
+    <script src="assets/js/sortFunctions.js"></script>
+    <script src="assets/js/bankFunctions.js"></script>
+    <script src="assets/js/addModal.js"></script>
+    <script src="assets/js/Char.js"></script>
+    <script src="assets/js/delFunction.js"></script>
+    <script src="assets/js/editFunction.js"></script>
+    <script src="assets/js/chart.js"></script>
+    
+        <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
 </body>
 
 </html>

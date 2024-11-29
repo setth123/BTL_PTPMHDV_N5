@@ -131,7 +131,7 @@ body {
 
 /* ===================== Main ===================== */
 .main {
-  position: relative;
+  position: absolute;
   width: calc(100% - 300px);
   left: 300px;
   min-height: 100vh;
@@ -184,7 +184,6 @@ body {
   border: 1px solid var(--black2);
 }
 
-
 .search label ion-icon {
   position: absolute;
   top: 0;
@@ -209,90 +208,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
-#add-car-button {
-  background-color: var(--blue); /* Tông màu xanh phù hợp */
-  color: #ffffff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-#add-car-button:hover {
-  background-color: var(--blue); /* Màu tối hơn khi hover */
-}
-/* ================== Order Details List ============== */
-/* 
-.details {
-  position: relative;
-  width: 100%;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
-}
-
-.details .recentOrders {
-  position: relative;
-  display: grid;
-  min-height: 500px;
-  background: var(--white);
-  padding: 20px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-
-.details .cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.cardHeader h2 {
-  font-weight: 600;
-  color: var(--blue);
-}
-.cardHeader .btn {
-  position: relative;
-  padding: 5px 10px;
-  background: var(--blue);
-  text-decoration: none;
-  color: var(--white);
-  border-radius: 6px;
-}
-
-.details table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.details table thead td {
-  font-weight: 600;
-}
-.details .recentOrders table tr {
-  color: var(--black1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.details .recentOrders table tr:last-child {
-  border-bottom: none;
-}
-.details .recentOrders table tbody tr:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-.details .recentOrders table tr td {
-  padding: 10px;
-}
-.details .recentOrders table tr td:last-child {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
-} */
+/* ================== Car & Interest Management ============== */
 
 .details {
   position: relative;
@@ -379,7 +295,22 @@ body {
   z-index: 1; /* Ensure the icon is above the table */
 }
 
-/* .modal {
+#add-car-button {
+  background-color: var(--blue); /* Tông màu xanh phù hợp */
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+#add-car-button:hover {
+  background-color: var(--blue); /* Màu tối hơn khi hover */
+}
+/* ================== Modal Detail Car in Car Management ============== */
+.modal {
   display: none;
   position: fixed;
   top: 0;
@@ -398,52 +329,12 @@ body {
   padding: 25px;
   border: none;
   border-radius: 8px;
-  width: 1200px;
-  max-width: 100%;
+  width: 80%;
   overflow-x: auto;
   box-shadow: 0 4px 20px rgba(0, 48, 73, 0.15);
   animation: modalSlideDown 0.3s ease;
-} */
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  z-index: 1000;
 }
 
-/* Fullscreen modal content */
-.modal-content {
-  background-color: #ffffff;
-  margin: 0; /* Remove margin for full screen */
-  padding: 25px;
-  border: none;
-  border-radius: 8px;
-  width: 100%; /* Full width of the screen */
-  height: 100%; /* Full height of the screen */
-  max-width: 100%;
-  max-height: 100%;
-  overflow: auto; /* Allows scrolling if content overflows */
-  box-shadow: 0 4px 20px rgba(0, 48, 73, 0.15);
-  position: relative;
-  animation: modalSlideDown 0.3s ease;
-}
-
-/* Optional: Close button style */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
 @keyframes modalSlideDown {
   from {
     transform: translateY(-50px);
@@ -455,7 +346,7 @@ body {
   }
 }
 
-/* .close-btn {
+.close-btn {
   color: #004B87;
   float: right;
   font-size: 28px;
@@ -464,7 +355,7 @@ body {
   transition: color 0.2s ease;
   padding: 5px 10px;
   margin: -15px -15px 0 0;
-} */
+}
 
 .close-btn:hover {
   color: #0073CC;
@@ -669,6 +560,7 @@ body {
   color: white;
   all: unset;
 }
+/* ====================== Edit Form ========================== */
 .edit-form h2{
   color: #2a2185;
 }
@@ -735,36 +627,125 @@ body {
   transform: translate(-62%, -50%);
   z-index: 2000;
 }
-/* Modal styling */
-/* .modal 
+/* ====================== Add Modal ========================== */
+.add-modal {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(0, 48, 73, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
+.modal-add-content {
+  background-color: #ffffff;
+  margin: 5% auto;
+  padding: 25px;
+  border: none;
   border-radius: 8px;
-  width: 300px;
-  max-width: 90%;
-  text-align: center;
-  position: relative;
+  width: 70%;
+  max-width: 800px;
+  overflow-x: auto;
+  box-shadow: 0 4px 20px rgba(0, 48, 73, 0.15);
+  animation: modalSlideDown 0.3s ease;
+}
+
+@keyframes modalSlideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
+  color: #004B87;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
-} */
+  transition: color 0.2s ease;
+  padding: 5px 10px;
+  margin: -15px -15px 0 0;
+}
+
+.close-btn:hover {
+  color: #0073CC;
+}
+
+#modal-add-title {
+  color: #004B87;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #004B87;
+}
+
+input, textarea {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #E1E8ED;
+  border-radius: 4px;
+  transition: border 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #0073CC;
+  outline: none;
+}
+
+button[type="submit"] {
+  display: block;
+  background-color: #004B87;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 30%;
+  margin: 0 auto;
+}
+
+button[type="submit"]:hover {
+  background-color: #0073CC;
+}
+
+form input[type="number"], form textarea {
+  width: 100%;
+}
+
+form textarea {
+  height: 120px;
+  resize: vertical;
+}
+select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+
 /* Responsive Design for Content */
 @media (max-width: 991px) {
   .cardBox {
