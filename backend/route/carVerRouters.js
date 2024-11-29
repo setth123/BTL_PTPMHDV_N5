@@ -1,20 +1,39 @@
 import express from "express";
-import carVer from "../Models/CarVersion.js";
+import CarVersion from "../Models/CarVersion.js";
 import editRecordService from "../Services/dataService/editRecordService.js";
 import getDataService from "../Services/dataService/getDataService.js";
 import delRecordService from "../Services/dataService/delRecordService.js"
-const carVerRouter=express.Router();
+import addDataService from "../Services/dataService/addRecordService.js";
+const carVerRouters=express.Router();
 
-carVerRouter.get('/',async(req,res)=>{
+carVerRouters.get('/', async(req,res)=>{
     try{
-        return res.status(200).json(await getDataService('CarVersion'))
+        return res.status(200).json(await getDataService('CarVersion'));
     }
     catch(err){
         return res.status(500).json(err.message);
     }
 })
 
-carVerRouter.get('/:id',async(req,res)=>{
+carVerRouters.post('/', async (req, res) => {
+    try {
+        const newVer = req.body; // Dữ liệu từ form được gửi lên từ client
+        const result = await addDataService('CarVersion', newVer);
+        
+        if (result) {
+            return res.status(201).json({ message: 'Dữ liệu được thêm thành công', data: result });
+        } else {
+            return res.status(500).json({ message: 'Thêm dữ liệu thất bại' });
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+});
+
+export default carVerRouters;
+
+
+carVerRouters.get('/:id',async(req,res)=>{
     const id=req.params;
     try{
         return res.status(200).json(await getDataService('CarVersion',{id:id.id}));
@@ -24,7 +43,7 @@ carVerRouter.get('/:id',async(req,res)=>{
     }
 })
 
-carVerRouter.get('/Car/:carID',async(req,res)=>{
+carVerRouters.get('/Car/:carID',async(req,res)=>{
     const carID=req.params;
     try{
         return res.status(200).json(await getDataService('CarVersion',{carID:carID.carID}));
@@ -34,7 +53,7 @@ carVerRouter.get('/Car/:carID',async(req,res)=>{
     }
 })
 
-carVerRouter.put('/editcarver/:tableName/:id', async(req,res)=>{
+carVerRouters.put('/editcarver/:tableName/:id', async(req,res)=>{
     try {
         const { tableName, id } = req.params;
         const newData = req.body;
@@ -45,7 +64,7 @@ carVerRouter.put('/editcarver/:tableName/:id', async(req,res)=>{
     }
 })
 // xóa carver theo id car 
-carVerRouter.delete('/Car/:carID', async (req, res) => {
+carVerRouters.delete('/Car/:carID', async (req, res) => {
     const carID = req.params.carID; // Lấy carID từ params
     try {
         // Gọi hàm xóa với carID
@@ -62,18 +81,3 @@ carVerRouter.delete('/Car/:carID', async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 });
-carVerRouters.post('/', async (req, res) => {
-    try {
-        const newVer = req.body; // Dữ liệu từ form được gửi lên từ client
-        const result = await addDataService('CarVersion', newVer);
-        
-        if (result) {
-            return res.status(201).json({ message: 'Dữ liệu được thêm thành công', data: result });
-        } else {
-            return res.status(500).json({ message: 'Thêm dữ liệu thất bại' });
-        }
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
-    }
-});
-export default carVerRouter;
