@@ -1,0 +1,97 @@
+/* Container cho dropdown */
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px; /* Đặt giới hạn tối đa cho dropdown */
+    margin: 0 auto; /* Căn giữa container */
+}
+
+/* Style cho dropdown khi chưa mở */
+.dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px; /* Cách đều nội dung */
+    border: 1px solid #ddd; /* Viền nhẹ nhàng */
+    border-radius: 8px; /* Bo tròn */
+    cursor: pointer;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng nổi */
+}
+
+/* Khi hover vào dropdown */
+.dropdown:hover {
+    border-color: #007bff; /* Đổi viền thành màu xanh lam */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Tăng độ nổi */
+}
+
+/* Text trong dropdown */
+.dropdown-text {
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap; /* Không cho text xuống dòng */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Hiện dấu "..." nếu text quá dài */
+}
+
+/* Mũi tên trong dropdown */
+.arrow {
+    font-size: 18px;
+    color: #333;
+    transition: transform 0.3s ease; /* Hiệu ứng xoay */
+}
+
+.dropdown.open .arrow {
+    transform: rotate(180deg); /* Xoay mũi tên khi mở */
+}
+
+/* Menu dropdown khi mở */
+.dropdown-menu {
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bo tròn */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Hiệu ứng nổi */
+    max-height: 200px; /* Giới hạn chiều cao */
+    overflow-y: auto; /* Thêm cuộn khi nội dung dài */
+    z-index: 1000; /* Đảm bảo menu nổi trên các phần khác */
+}
+
+/* Mục menu */
+.menu-item {
+    padding: 12px 16px; /* Cách đều nội dung */
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Màu nền khi hover vào mục menu */
+.menu-item:hover {
+    background-color: #007bff; /* Nền xanh lam nhạt */
+    color: #fff; /* Chữ trắng */
+}
+
+/* Khi dropdown mở, viền sẽ đổi màu xanh */
+.dropdown.open {
+    border-color: #007bff;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .dropdown-container {
+        width: 90%; /* Chiếm 90% chiều rộng màn hình */
+    }
+    .dropdown {
+        font-size: 14px; /* Nhỏ hơn trên màn hình nhỏ */
+        padding: 10px 12px;
+    }
+    .menu-item {
+        font-size: 13px; /* Nhỏ hơn trên màn hình nhỏ */
+    }
+}

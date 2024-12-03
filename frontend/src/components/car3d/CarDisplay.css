@@ -1,0 +1,31 @@
+/* src/components/CarDisplay/CarDisplay.css */
+.car-display-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.car-item {
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.car-item:hover .car-image {
+    transform: rotateY(180deg); /* Hiệu ứng xoay ảnh khi hover */
+}
+
+.car-name {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
