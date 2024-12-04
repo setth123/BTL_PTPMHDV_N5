@@ -11,6 +11,10 @@ import rateRouters from "./route/rateRouters.js";
 
 const app=express();
 app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4000', // địa chỉ của browser-app
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
