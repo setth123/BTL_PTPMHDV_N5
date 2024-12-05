@@ -91,11 +91,11 @@
                 </div>
             </div>
                 <!-- Phần header chứa hai biểu đồ -->
-            <div class="dashboard-header">
-                <div class="chart-container">
+            <div id="dashboard-header">
+                <div id="chart-container">
                     <canvas id="chart1"></canvas>
                 </div>
-                <div class="chart-container">
+                <div id="chart-container">
                     <canvas id="chart2"></canvas>
                 </div>
             </div>
@@ -267,6 +267,41 @@
                             <h2>Interest Management</h2>
                             <button id="add-car-button" onclick="openAddModal('rate')">Thêm</button>
                         </div>
+                        <div class="filter-section">
+                            <!-- Dropdown cho Loan Year -->
+                            <div class="filter-container">
+                              <label for="loanYear">Chọn Thời gian Vay:</label>
+                              <select id="loanYear">
+                                <option value="all">Tất cả</option>
+                                <option value="Dưới 5 năm">Dưới 5 năm</option>
+                                <option value="5-7 năm">5-7 năm</option>
+                                <option value="Trên 7 năm">Trên 7 năm</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Dropdown cho Interest Rate -->
+                            <div class="filter-container">
+                              <label for="interestRate">Chọn Tỷ lệ Lãi suất:</label>
+                              <select id="interestRate">
+                                <option value="all">Tất cả</option>
+                                <option value="Dưới 5%">Dưới 5%</option>
+                                <option value="5-7%">5-7%</option>
+                                <option value="Trên 7%">Trên 7%</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Nút Tìm kiếm và Load lại -->
+                            <div class="button-container">
+                                <button onclick="searchBanks()" style="display: flex; align-items: center; gap: 5px;">
+                                  <span class="material-icons">search</span>
+                                </button>
+                                <button onclick="loadBanks()" style="display: flex; align-items: center; gap: 5px;">
+                                  <span class="material-icons">refresh</span>
+                                </button>
+                            </div>
+                              
+                        </div>
+
                         <div style="position: relative;">
                             <table>
                                 <thead>

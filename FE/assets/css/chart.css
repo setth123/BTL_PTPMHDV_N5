@@ -1,12 +1,12 @@
-.dashboard-header {
-    display: flex;
+#dashboard-header {
+    display: none;
     justify-content: space-between;
     padding: 20px;
     color: white;  /* Chữ màu trắng */
     border-bottom: 2px solid #ddd;
 }
 
-.chart-container {
+#chart-container {
     display: flex;
     justify-content: center;  /* Canh giữa biểu đồ */
     align-items: center;      /* Canh giữa theo chiều dọc */

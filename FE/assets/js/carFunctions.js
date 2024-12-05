@@ -47,6 +47,9 @@ async function loadCars() {
             `;
             tableBody.appendChild(row);
         });
+        // Hiển thị phần biểu đồ
+        const chartContainer = document.getElementById('dashboard-header');
+        chartContainer.style.display = 'flex'; // Hiển thị phần biểu đồ
     } catch (error) {
         console.error('Error loading cars:', error);
         const tableBody = document.getElementById('car-table-body');

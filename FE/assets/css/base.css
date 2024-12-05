@@ -309,6 +309,63 @@ body {
 #add-car-button:hover {
   background-color: var(--blue); /* Màu tối hơn khi hover */
 }
+/*phần dropdown*/
+/* Đặt filter section và các nút vào một dòng và căn chỉnh */
+.filter-section {
+  display: flex;
+  align-items: center; /* Canh giữa theo chiều dọc */
+  justify-content: flex-start; /* Căn trái */
+  gap: 20px; /* Khoảng cách giữa các nhóm */
+  flex-wrap: wrap; /* Đảm bảo không bị tràn dòng */
+  margin-bottom: 20px; /* Tạo khoảng cách phía dưới */
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa label và dropdown */
+}
+
+.filter-container label {
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.filter-container select {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  min-width: 150px; /* Đảm bảo độ rộng tối thiểu */
+}
+
+.filter-container select:focus {
+  border-color: var(--blue);
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+.button-container button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: rgb(157, 168, 173);
+}
+
 /* ================== Modal Detail Car in Car Management ============== */
 .modal {
   display: none;
