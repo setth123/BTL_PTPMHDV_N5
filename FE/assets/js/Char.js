@@ -1,6 +1,12 @@
 async function fetchCharData(url) {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':`Bearer ${localStorage.adminToken}`
+              },
+              body: JSON.stringify(data)
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
         }

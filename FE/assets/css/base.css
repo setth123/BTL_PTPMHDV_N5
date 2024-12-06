@@ -814,3 +814,39 @@ select {
     left: initial;
   }
 }
+
+/* Static */
+.stats-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.stat-box {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background: #f9f9f9;
+}
+.stat-box h3 {
+  margin-bottom: 15px;
+}
+#top-banks{
+  width:500px;
+  height: 200px;
+  border:1px solid black;
+  border-collapse: collapse;
+}
+#top-banks th,td{
+  border: 1px solid black;
+}
+#top-cars{
+  width:500px;
+  height: 200px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#top-cars th,td{
+  border: 1px solid black;
+}

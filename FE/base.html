@@ -69,6 +69,15 @@
                         <span class="title">Chart</span>
                     </a>
                 </li>
+
+                <li onclick="loadTemplate('static');fetchStaticDt();">
+                    <a href="#"> 
+                        <span class="icon">
+                            <ion-icon name="ion-stats-bars"></ion-icon>
+                        </span>
+                        <span class="title">Stats</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -289,6 +298,59 @@
                 <canvas id="interestRateChart" width="400" height="200"></canvas>
             </template>
 
+            <!-- static -->
+            <template id="static">
+                <div class="stats-container">
+                    <div class="stat-box" id="least-viewed-car">
+                        <h3>Xe được xem ít nhất</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                    <div class="stat-box" id="least-viewed-bank">
+                        <h3>Ngân hàng được xem ít nhất</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                    <div class="stat-box" id="total-views">
+                        <h3>Tổng lượt xem</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                </div>
+                <!-- table -->
+                <div style="display: flex;margin-top: 5%;">
+                    <div style="margin-left: 3%;">
+                        <h2 style="margin-bottom: 5%;">Top 5 ngân hàng được xem nhiều nhất</h2>
+                        <table id="top-banks">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ngân hàng</th>
+                                    <th>Lãi suất</th>
+                                    <th>Lượt xem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="3">Đang tải...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-left: 3%;">
+                        <h2 style="margin-bottom: 5%;">Top 5 xe được xem nhiều nhất</h2>
+                        <table id="top-cars">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Xe</th>
+                                    <th>Giá</th>
+                                    <th>Lượt xem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="3">Đang tải...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
         </div>
     </div>
      <!--Overlay-->
@@ -308,6 +370,7 @@
     <script src="assets/js/delFunction.js"></script>
     <script src="assets/js/editFunction.js"></script>
     <script src="assets/js/chart.js"></script>
+    <script src="assets/js/static.js"></script>
     
         <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

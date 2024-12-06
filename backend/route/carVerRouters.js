@@ -30,7 +30,6 @@ carVerRouters.post('/', async (req, res) => {
     }
 });
 
-export default carVerRouters;
 
 
 carVerRouters.get('/:id',async(req,res)=>{
@@ -81,3 +80,4 @@ carVerRouters.delete('/Car/:carID', async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 });
+export default carVerRouters;
