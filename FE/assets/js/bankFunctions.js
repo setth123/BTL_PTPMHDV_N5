@@ -3,9 +3,8 @@ async function fetchData(url) {
         const response = await fetch(url,{
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization':`Bearer ${localStorage.adminToken}`
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
               },
-              body: JSON.stringify(data)
         });
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);

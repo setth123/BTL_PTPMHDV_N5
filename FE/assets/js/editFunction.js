@@ -26,7 +26,7 @@ async function confirmEditBank(formId, tablename) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
             },
             body: JSON.stringify(editData),
         });
@@ -72,7 +72,7 @@ async function confirmEdit(formId, tablename) {
             method: 'PUT',  // Chuyển thành PUT thay vì POST
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
             },
             body: JSON.stringify(editData),  // Gửi dữ liệu đã thay đổi
         });
@@ -269,7 +269,7 @@ async function fetchCarLines() {
     try {
         const response = await fetch('http://localhost:3000/car', {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
             },
         }); // API lấy danh sách các dòng xe
         if (!response.ok) {
@@ -310,7 +310,7 @@ async function confirmEditCarversion(formId) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
             },
             body: JSON.stringify(editData),
         });

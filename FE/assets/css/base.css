@@ -838,7 +838,7 @@ select {
   border:1px solid black;
   border-collapse: collapse;
 }
-#top-banks th,td{
+#top-banks th,#top-banks td{
   border: 1px solid black;
 }
 #top-cars{
@@ -847,6 +847,6 @@ select {
   border: 1px solid black;
   border-collapse: collapse;
 }
-#top-cars th,td{
+#top-cars th,#top-cars td{
   border: 1px solid black;
 }

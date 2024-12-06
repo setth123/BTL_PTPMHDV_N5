@@ -18,7 +18,7 @@ app.use('/rate',verifyToken,rateRouters);
 app.use('/car',verifyToken,carRouter);
 app.use('/carVer',verifyToken, carVerRouters);
 app.use('/admin',adminRouters);
-app.use('/custormerStatic',customerStaticRouter);
+app.use('/custormerStatic',verifyToken,customerStaticRouter);
 
 mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(async()=>{

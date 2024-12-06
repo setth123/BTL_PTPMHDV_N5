@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- ======= Chars ====== -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             const token=localStorage.getItem('adminToken');
@@ -61,7 +62,7 @@
                 </li>
 
                 
-                <li onclick="loadTemplate('chart'); creatChart();">
+                <li onclick="loadTemplate('chart');">
                     <a> 
                         <span class="icon">
                             <ion-icon name="Bar-chart"></ion-icon>
@@ -293,11 +294,6 @@
                 </div>
             </template>
             
-            <template id="chart">
-                <h2>Bank Interest Rates Chart</h2>
-                <canvas id="interestRateChart" width="400" height="200"></canvas>
-            </template>
-
             <!-- static -->
             <template id="static">
                 <div class="stats-container">
@@ -351,6 +347,24 @@
                 </div>
             </template>
 
+            <!-- chart -->
+            <template id="chart">
+                <div class="container1">
+                    <div class="controls">
+                        <div>Chọn bảng:</div>
+                        <select id="tableName1" onchange="onTableChange()">
+                            <option value="rate">Ngân Hàng</option>
+                            <option value="carVer">Xe</option>
+                        </select>
+                        <div>Chọn dòng xe:</div>
+                        <select id="car1"></select>
+                        <div>Chọn trường dữ liệu:</div>
+                        <select id="field1"></select>
+                        <button id='submitc'onclick="drawChart()">Vẽ biểu đồ</button>
+                    </div>
+                    <canvas id="chart1"></canvas>
+                </div>
+            </template>
         </div>
     </div>
      <!--Overlay-->
@@ -369,7 +383,6 @@
     <script src="assets/js/Char.js"></script>
     <script src="assets/js/delFunction.js"></script>
     <script src="assets/js/editFunction.js"></script>
-    <script src="assets/js/chart.js"></script>
     <script src="assets/js/static.js"></script>
     
         <!-- ====== ionicons ======= -->

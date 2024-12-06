@@ -4,7 +4,7 @@ async function fetchStaticDt(){
             method:'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
             },
         })
         const data=await res.json();
