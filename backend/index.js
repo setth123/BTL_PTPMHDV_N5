@@ -8,6 +8,7 @@ import adminRouters from "./route/adminRouters.js";
 import verifyToken from "./middlewares/verify.js";
 import getDataService from "./Services/dataService/getDataService.js";
 import rateRouters from "./route/rateRouters.js";
+import filterBankRoute from "./route/filterRouter.js";
 
 const app=express();
 app.use(cors());
@@ -19,6 +20,7 @@ app.use('/rate',rateRouters);
 app.use('/car',carRouter);
 app.use('/carVer', carVerRouters);
 app.use('/admin',adminRouters);
+app.use('/filterBank',filterBankRoute)
 
 mongoose.connect("mongodb+srv://thanhtkcb2004:ksiuOWOBVmMF6sP5@cluster0.uuuqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(async()=>{
