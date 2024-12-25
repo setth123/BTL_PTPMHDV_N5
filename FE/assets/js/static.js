@@ -12,14 +12,14 @@ async function fetchStaticDt(){
         const leastCarElement = document.getElementById("least-viewed-car");
         leastCarElement.innerHTML = `
             <h3>Xe được xem ít nhất</h3>
-            <p>${data.leastCar[0].verName} - Giá: ${data.leastCar[0].price} triệu - Lượt xem: ${data.leastCar[0].views}</p>
+            <p>${data.leastCar[0].verName} - Giá: ${data.leastCar[0].price} triệu - Lượt xem: ${data.leastCar[0].viewed}</p>
         `;
 
         // Cập nhật ngân hàng ít được xem nhất
         const leastBankElement = document.getElementById("least-viewed-bank");
         leastBankElement.innerHTML = `
             <h3>Ngân hàng được xem ít nhất</h3>
-            <p>${data.leastBank[0].BankName} - Lãi suất: ${data.leastBank[0].Rate}% - Lượt xem: ${data.leastBank[0].views}</p>
+            <p>${data.leastBank[0].BankName} - Lãi suất: ${data.leastBank[0].Rate}% - Lượt xem: ${data.leastBank[0].viewed}</p>
         `;
 
         // Cập nhật tổng lượt xem
