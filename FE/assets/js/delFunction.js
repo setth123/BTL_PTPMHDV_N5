@@ -1,5 +1,6 @@
 // Hàm xóa car id
-async function confirmDelete(carId) {
+async function confirmDelete(carId,event) {
+    event.stopPropagation(); // Ngăn sự kiện click lan truyền đến hàng
     console.log("Car ID received for deletion:", carId); // Log ID nhận được
     const userConfirmed = confirm("Bạn có chắc chắn muốn xóa xe này không?");
     if (userConfirmed) {
@@ -18,13 +19,17 @@ async function confirmDelete(carId) {
 
             if (response.ok) {
                 alert("Xe đã được xóa thành công");
-                document.getElementById(`car-${carId}`).remove();
+                // Xóa hàng khỏi bảng dựa trên ID
+                const row = document.querySelector(`tr[data-car-id="${carId}"]`);
+                if (row) row.remove();
+                // Tải lại danh sách xe
+                await loadCars();
             } else {
                 alert(`Lỗi khi xóa xe: ${result.message}`);
             }
         } catch (error) {
             console.error("Error deleting car:", error);
-            //alert("Đã xảy ra lỗi khi xóa xe.");
+            
         }
     }
 }
@@ -49,7 +54,11 @@ async function confirmDeleteBank(bankID) {
 
             if (response.ok) {
                 alert("Ngân hàng đã được xóa thành công");
-                document.getElementById(`rate-${bankID}`).remove();
+                // Xóa hàng khỏi bảng dựa trên ID
+                const row = document.querySelector(`tr[data-bank-id="${bankID}"]`);
+                if (row) row.remove();
+                // Tải lại danh sách ngân hàng
+                await loadBanks();
             } else {
                 alert(`Lỗi khi xóa ngân hàng: ${result.message}`);
             }
@@ -59,3 +68,4 @@ async function confirmDeleteBank(bankID) {
         }
     }
 }
+

@@ -41,7 +41,7 @@ async function loadCars() {
                 <td>${car.name || ''}</td>
                 <td>${car.pictureURL ? `<img src="${car.pictureURL}" alt="${car.name}">` : 'No image'}</td>
                 <td>
-                    <button onclick="confirmDelete('${car._id}')" style="border: none; background: none; cursor: pointer;">
+                    <button onclick="confirmDelete('${car._id}',event)" style="border: none; background: none; cursor: pointer;">
                         <ion-icon name="trash-outline" style="color: red; font-size: 20px;"></ion-icon>
                     </button>
                 </td>

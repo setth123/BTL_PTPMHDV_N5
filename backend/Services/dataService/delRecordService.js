@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const delRecordService = async (tableName, selectedId) => {
-    if (!mongoose.isValidObjectId(selectedId)) {
-        console.error("Invalid ID format");
-        return null; // Trả về null nếu ID không hợp lệ
-    }
-
     try {
         const deletedRecord = await mongoose.model(tableName).findByIdAndDelete(selectedId);
 
