@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard </title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/chart.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- ======= Chars ====== -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const token=localStorage.getItem('adminToken');
+            if(!token) {
+                console.log("Test");
+                window.location.href="login.html";
+            }
+        })
+        function logout(){
+            localStorage.removeItem('adminToken');
+            window.location.href="login.html";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="car-outline"></ion-icon>
+                        </span>
+                        <span class="title">Car Management</span>
+                    </a>
+                </li>
+
+                <li onclick="loadTemplate('carmanager'); loadCars();">
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li onclick="loadTemplate('interestmanager'); loadBanks();"> 
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="title">Lãi xuất ngân hàng</span>
+                    </a>
+                </li>
+
+                
+                <li onclick="loadTemplate('chart');">
+                    <a> 
+                        <span class="icon">
+                            <ion-icon name="Bar-chart"></ion-icon>
+                        </span>
+                        <span class="title">Chart</span>
+                    </a>
+                </li>
+
+                <li onclick="loadTemplate('static');fetchStaticDt();">
+                    <a href="#"> 
+                        <span class="icon">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Customer Statics</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" id="search-box" placeholder="Search by Car Name or Bank Name" oninput="filterCarsAndBanks()" "/>
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                    
+                </div>
+                <div onclick="logout()" style="margin-left: 5%; width: 10%; cursor: pointer; text-align: center;">
+                    <i class="material-icons" style="font-size: 24px;">logout</i>
+                </div>
+            </div>
+            <!-- Content Block -->
+            <div id="content"></div>
+
+            <div id="edit-form-car" class="edit-form">
+                <span id="close-edit-form" class="close-btn" onclick="closeEditForm('edit-form-car')">&times;</span>
+                <h2>Sửa Dữ Liệu</h2>
+                <form>
+                <div class="form-grid-car">
+                    <div>
+                        <label for="carModel">Dòng Xe</label>
+                        <input type="text" id="carModel" name="name" placeholder="Nhập dòng xe">
+                    </div>
+                    <div>
+                        <label for="imageLink">Đường dẫn hình ảnh</label>
+                        <input type="text" id="imageLink" name="pictureURL" placeholder="Nhập đường dẫn hình ảnh">
+                    </div>
+                    <div class="full-width">
+                    <div class="button-container">
+                        <button type="submit" class="save" onclick="confirmEdit('edit-form-car')">Lưu</button>
+                        <button type="button" class="cancel" onclick="closeEditForm('edit-form-car')">Huỷ</button>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div id="edit-form-bank" class="edit-form">
+                <span id="close-edit-form" class="close-btn" onclick="closeEditForm('edit-form-bank')">&times;</span>
+                <h2>Sửa Dữ Liệu</h2>
+                <form>
+                <div class="form-grid-bank">
+                    <div>
+                        <label for="bankName">Tên ngân hàng</label>
+                        <input type="text" id="bankName" name="BankName" placeholder="Nhập tên ngân hàng">
+                    </div>
+                    <div>
+                        <label for="rate">Lãi suất(%/năm)</label>
+                        <input type="number" id="rate" name="Rate" placeholder="Nhập lãi suất" step="0.01">
+                    </div>
+                    <div>
+                        <label for="maxPercent">% tối đa</label>
+                        <input type="number" id="maxPercent" name="MaxPercent" placeholder="Nhập lãi suất">
+                    </div>
+                    <div>
+                        <label for="maxTerm">Kỳ hạn tối đa</label>
+                        <input type="number" id="maxTerm" name="MaxTerm" placeholder="Nhập lãi suất">
+                    </div>
+                    <div class="full-width">
+                    <div class="button-container">
+                        <button type="submit" class="save" id="save-rate">Lưu</button>
+                        <button type="button" class="cancel" onclick="closeEditForm('edit-form-bank')">Huỷ</button>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!--Form sửa phiên bản xe-->
+            <div id="edit-form-carver" class="edit-form">
+                <span id="close-edit-form" class="close-btn" onclick="closeEditForm('edit-form-carver')">&times;</span>
+                <h2>Sửa Dữ Liệu</h2>
+                <form>
+                <div class="form-grid-carver">
+                    <div>
+                        <label for="carVerName">Tên phiên bản</label>
+                        <input type="text" id="carVerName" name="verName" placeholder="Nhập tên Phiên bản">
+                    </div>
+                    <!-- <div>
+                        <label for="car-select">Dòng xe</label>
+                        <select id="car-select" name="carId">
+                    </div> -->
+                    <div>
+                        <label for="price">Giá</label>
+                        <input type="number" id="price" name="price" placeholder="Nhập giá">
+                    </div>
+                    <div>
+                        <label for="acc">Tốc độ tăng tốc</label>
+                        <input type="number" id="acc" name="acceleration" placeholder="Nhập tốc độ tăng tốc" step="0.1">
+                    </div>
+                    <div>
+                        <label for="baterry">Dung lượng pin</label>
+                        <input type="number" id="baterry" name="battery" placeholder="Dung lượng pin" step="0.01">
+                    </div>
+                    <div>
+                        <label for="weight">Trọng lượng</label>
+                        <input type="number" id="weight" name="weight" placeholder="Nhập trọng lượng">
+                    </div>
+                    <div>
+                        <label for="seats">Số chỗ ngồi</label>
+                        <input type="number" id="seats" name="seatsNumber" placeholder="Nhập số chỗ ngồi" required>
+                    </div>
+                    <div>
+                        <label for="distance">Cự ly</label>
+                        <input type="number" id="distance" name="dist" placeholder="Nhập cự ly (km)" step="0.01" required>
+                    </div>
+                    <div>
+                        <label for="maxPower">Công suất tối đa</label>
+                        <input type="number" id="maxPower" name="maxPower" placeholder="Nhập công suất tối đa (kW)" step="0.1" required>
+                    </div>
+                    <div>
+                        <label for="length">Chiều dài</label>
+                        <input type="number" id="length" name="length" placeholder="Nhập chiều dài (mm)" required>
+                    </div>
+                    <div>
+                        <label for="width">Chiều rộng:</label>
+                        <input type="number" id="width" name="width" placeholder="Nhập chiều rộng (mm)" required>
+                    </div>
+                    <div>
+                        <label for="height">Chiều cao</label>
+                        <input type="number" id="height" name="height" placeholder="Nhập chiều cao (mm)" required>
+                    </div>
+                    <div>
+                        <label for="batteryIncluded">Kèm pin</label>
+                        <select id="batteryIncluded" name="isBaterry" required>
+                            <option value="True">Có</option>
+                            <option value="False">Không</option>
+                        </select>
+                    </div>
+                    <div class="full-width">
+                    <div class="button-container">
+                        <button type="submit" class="save" id="save-carver">Lưu</button>
+                        <button type="button" class="cancel" onclick="closeEditForm('edit-form-carver')">Huỷ</button>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+            <!-- Template Car Management -->
+            <template id="carmanager">
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Car Management</h2>
+                            <button id="add-car-button" onclick="openAddModal('car')">Thêm</button>
+                        </div>
+                        <div style="position: relative;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>STT</td>
+                                        <td>ID</td>
+                                        <td>Dòng xe</td>
+                                        <td>Ảnh</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="car-table-body">
+                                    
+                                </tbody>
+                            </table>
+                            <span id="car-sort-icon" onclick="sortCarTable()" style="cursor: pointer; position: absolute; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon for Car Name -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div id="car-details" class="modal">
+                </div>
+
+            </template>
+
+            
+            <!-- template interest management  -->
+            <template id="interestmanager">
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Interest Management</h2>
+                            <button id="add-car-button" onclick="openAddModal('rate')">Thêm</button>
+                        </div>
+                        <div style="position: relative;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>STT</td>
+                                        <td>ID</td>
+                                        <td>
+                                            Tên ngân hàng
+                                            <span onclick="sortBankTable()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
+                                        </td>
+                                        <td>Tỷ lệ tối đa</td>
+                                        <td>Thời gian tối đa</td>
+                                        <td>Tỷ lệ
+                                            <span onclick="sortBankTableRate()" style="cursor: pointer; top: 10px; right: 10px;">&#x21C5;</span> <!-- Sorting icon -->
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody id="car-table-body">
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- static -->
+            <template id="static">
+                <div class="stats-container">
+                    <div class="stat-box" id="least-viewed-car">
+                        <h3>Xe được xem ít nhất</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                    <div class="stat-box" id="least-viewed-bank">
+                        <h3>Ngân hàng được xem ít nhất</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                    <div class="stat-box" id="total-views">
+                        <h3>Tổng lượt xem</h3>
+                        <p>Đang tải...</p>
+                    </div>
+                </div>
+                <!-- table -->
+                <div style="display: flex;margin-top: 5%;">
+                    <div style="margin-left: 3%;">
+                        <h2 style="margin-bottom: 5%;">Top 5 ngân hàng được xem nhiều nhất</h2>
+                        <table id="top-banks">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ngân hàng</th>
+                                    <th>Lãi suất</th>
+                                    <th>Lượt xem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="3">Đang tải...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-left: 3%;">
+                        <h2 style="margin-bottom: 5%;">Top 5 xe được xem nhiều nhất</h2>
+                        <table id="top-cars">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Xe</th>
+                                    <th>Giá</th>
+                                    <th>Lượt xem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="3">Đang tải...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+            <!-- chart -->
+            <template id="chart">
+                <div class="container1">
+                    <div class="controls">
+                        <div>Chọn bảng:</div>
+                        <select id="tableName1" onchange="onTableChange()">
+                            <option value="rate">Ngân Hàng</option>
+                            <option value="carVer">Xe</option>
+                        </select>
+                        <div>Chọn dòng xe:</div>
+                        <select id="car1"></select>
+                        <div>Chọn trường dữ liệu:</div>
+                        <select id="field1"></select>
+                        <button id='submitc'onclick="drawChart()">Vẽ biểu đồ</button>
+                    </div>
+                    <canvas id="chart1"></canvas>
+                </div>
+            </template>
+        </div>
+    </div>
+     <!--Overlay-->
+     <div id="overlay" style="display: none;"></div>
+
+    <!-- =========== Scripts =========  -->
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/templateLoader.js"></script>
+    <script src="assets/js/carFunctions.js"></script>
+    <script src="assets/js/bankFunctions.js"></script>
+    <script src="assets/js/filterFunctions.js"></script>
+    <script src="assets/js/sortFunctions.js"></script>
+    <script src="assets/js/bankFunctions.js"></script>
+    <script src="assets/js/addModal.js"></script>
+    <script src="assets/js/Char.js"></script>
+    <script src="assets/js/delFunction.js"></script>
+    <script src="assets/js/editFunction.js"></script>
+    <script src="assets/js/static.js"></script>
+    
+        <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+</body>
+
+</html>
