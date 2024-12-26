@@ -1,0 +1,110 @@
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    font-size: 12px;
+    color: #6c757d;
+    display: flex; /* Dùng Flexbox */
+    justify-content: space-between; /* Phân bố đều các phần */
+    align-items: flex-start; /* Căn trên */
+    flex-wrap: wrap; /* Tự động xuống hàng nếu không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các phần */
+  }
+  
+  .footer-logo,
+  .footer-links,
+  .footer-contact,
+  .footer-newsletter {
+    flex: 1; /* Mỗi phần chiếm 1 phần bằng nhau */
+    min-width: 200px; /* Đảm bảo mỗi phần không quá nhỏ */
+    max-width: 300px; /* Hạn chế chiều rộng tối đa */
+  }
+  
+  .footer-logo img {
+    width: 40px; /* Thu nhỏ kích thước ảnh */
+    height: auto; /* Giữ tỷ lệ ảnh */
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh và chữ */
+  }
+  
+  .footer-logo p {
+    margin: 5px 0;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-links ul li a {
+    text-decoration: none;
+    color: #0303039d;
+    font-size: 11px;
+  }
+  
+  .footer-contact p {
+    margin: 5px 0;
+    font-size: 11px;
+  }
+  
+  .footer-contact a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .social-icons a {
+    font-size: 16px;
+    margin: 0 5px;
+    color: #6c757d;
+  }
+  
+  .footer-newsletter input {
+    padding: 5px;
+    font-size: 11px;
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .footer-newsletter button {
+    padding: 5px 10px;
+    font-size: 11px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .footer-newsletter button:hover {
+    background-color: #0056b3;
+  }
+  
+  .footer-newsletter p {
+    font-size: 10px;
+    margin: 5px 0;
+  }
+  
+  .footer-newsletter a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .footer-newsletter a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-copyright {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 10px;
+    color: #999;
+  }
+  

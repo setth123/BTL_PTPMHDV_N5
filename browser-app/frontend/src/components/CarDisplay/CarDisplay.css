@@ -1,0 +1,150 @@
+.car-display-container {
+    padding: 60px 20px;
+    margin: auto;
+    width: 80%;
+    position: relative;
+  }
+  
+  /* Nút điều hướng */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.363);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  
+  .slider-arrow.prev {
+    left: -50px;
+  }
+  
+  .slider-arrow.next {
+    right: -50px;
+  }
+  
+  .car-item {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.5s ease;
+  }
+  
+  .car-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .car-item:hover .car-image {
+    transform: scale(1.2);
+    opacity: 0.2; /* Làm mờ ảnh */
+  }
+  
+  .car-overlay {
+    position: relative;
+  }
+  
+  .car-name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.678);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .car-item:hover .car-name-overlay {
+    opacity: 1; /* Hiển thị tên xe khi hover */
+  }
+  
+  /* Căn giữa slider */
+  .slick-list {
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  /* Container cho hình ảnh lớn */
+  .large-image-container {
+    margin-top: 50px; /* Tạo khoảng cách với phần xe */
+    text-align: center;
+  }
+  
+  .large-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Phần tin tức nổi bật */
+  .featured-news {
+    margin-top: 70px; /* Tạo khoảng cách với phần xe */
+  }
+  
+  .featured-news-title {
+    font-size: 24px;
+    text-align: left; /* Căn lề trái */
+    margin-left: 20px; /* Chếch sang trái một chút */
+    color: #333;
+  }
+  
+  /* Container cho các bài viết */
+  .articles-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  /* Bài viết */
+  .article-item {
+    width: 22%;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .article-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .article-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .article-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .article-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  

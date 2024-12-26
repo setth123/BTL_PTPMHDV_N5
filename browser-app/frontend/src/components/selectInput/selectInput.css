@@ -1,0 +1,70 @@
+/* Container chính của combobox */
+.combobox-container {
+    position: relative;
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Input combobox */
+  .combobox-input {
+    width: 70%;
+    padding: 12px;
+    font-size: 14px;
+    border: 2px solid hsl(248, 67%, 2%); 
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    align-items: center; /* Căn giữa theo chiều ngang */ 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .combobox-input:focus, .combobox-input:active {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Mũi tên của combobox */
+  .combobox-arrow {
+    position: absolute;
+    top: 50%;
+    right: 90px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .combobox-arrow.open {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  /* Menu dropdown của combobox */
+  .combobox-menu {
+    position: absolute;
+    top: 100%;
+    left: 10;
+    width: 70%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+  }
+  
+  /* Item trong dropdown của combobox */
+  .combobox-item {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .combobox-item:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .highlight {
+    background-color: #ffefc3;
+  }

@@ -1,0 +1,147 @@
+/* Container chính */
+.car-recommendation-container {
+  max-width: 80%;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+/* Tiêu đề */
+.car-recommendation-container h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.input-field input {
+  width: 50%;
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Nút gửi */
+.submit-button {
+  background-color: #3d698b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  width: 200px;
+}
+
+.submit-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+}
+/* Chú ý */
+.input-note {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.input-note strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+/* Thông báo lỗi */
+.error {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Bảng gợi ý */
+.car-suggestions {
+  margin-top: 30px;
+}
+
+.table-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.suggestion-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.suggestion-table thead {
+  background-color: #3d698b;
+  color: white;
+}
+
+.suggestion-table th,
+.suggestion-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.suggestion-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.suggestion-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.suggestion-table tr:hover {
+  background-color: #f1f3f5;
+  transition: background-color 0.3s ease;
+}

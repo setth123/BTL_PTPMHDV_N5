@@ -1,0 +1,21 @@
+/* src/index.css */
+
+/* Áp dụng font cho toàn bộ trang */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Các phần tử khác */
+  h1, h2, h3, h4 {
+    font-weight: 700;
+  }
+  
+  p {
+    font-weight: 400;
+  }
+  

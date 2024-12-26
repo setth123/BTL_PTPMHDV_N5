@@ -1,0 +1,304 @@
+/* Container chính */
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;  /* Màu nền trắng */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Thêm hiệu ứng bóng mờ cho container */
+  margin-top: 20px; /* Thêm khoảng cách phía trên */
+}
+
+/* Phần bên trái hiển thị hình ảnh */
+.left-section {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-frame {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.display-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Chi tiết khoản vay */
+.loan-details {
+  margin-top: 20px;
+  padding: 20px;
+  border: 3px solid #cfcfcf;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  width: 90%;
+}
+
+/* Phần bên phải lựa chọn */
+.right-section {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container {
+  margin-left: 20px;
+  width: 80%;
+  max-width: 600px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px ;
+}
+
+/* Cấu trúc cho các select input */
+select, .custom-input {
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-top: 9px;
+  width: 100%;
+  border: 2px solid #711919;  /* Màu viền sáng hơn */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input */ 
+.custom-input { 
+  border: 2px solid hsl(248, 67%, 2%); 
+  padding: 12px; font-size: 14px; 
+  border-radius: 5px; outline: none; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+  width: 100%; /* Đảm bảo input chiếm đủ chiều rộng */ 
+  max-width: 300px; /* Đặt chiều rộng tối đa */ 
+  box-sizing: border-box; /* Bao gồm padding và border trong chiều rộng */
+ }
+
+.custom-input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Container cho các tùy chọn con */
+.input-container { 
+  display: flex; 
+  flex-direction: column; 
+  margin-left: 83px ;
+  gap: 8px; 
+  width: 100%; /* Đảm bảo container chiếm đủ chiều rộng */ }
+
+
+/* Nút Submit */
+.submit-button {
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  display: block; /* Đảm bảo nút được hiển thị như một khối */
+  margin: 30px 140px; /* Căn giữa */
+  width: 30%; /* Đặt chiều rộng */
+  transition: background-color 0.3s ease;
+}
+
+
+.submit-button:hover {
+  background-color: #004085;
+}
+
+/* Nút Chi tiết lịch trả góp */
+.details-button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 30%; /* Đặt chiều rộng */
+  text-align: center;
+  transition: background-color 0.3s ease;
+  align-self: center; /* Căn giữa */
+}
+
+.details-button:hover {
+  background-color: #218838;
+}
+
+/* Modal hiển thị bảng trả góp */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 80%;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid #280f0f;
+
+}
+
+
+
+/* Bảng trả góp */
+.payment-schedule {
+  margin-top: 20px;
+}
+
+.payment-schedule table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-schedule thead, .payment-schedule tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-schedule tr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.payment-schedule th, .payment-schedule td {
+  padding: 12px;
+  text-align: right;
+  border: 1px solid #be5c5c;
+  font-size: 14px;
+  color: #dadada;
+  flex: 1; /* Mỗi ô chiếm 1 phần không gian */
+}
+
+.payment-schedule th:first-child, .payment-schedule td:first-child {
+  text-align: left;
+}
+
+.payment-schedule thead tr {
+  background-color: #e9ecef;  /* Màu nền tiêu đề nhẹ */
+  color: #495057;  /* Màu chữ tiêu đề tối hơn */
+}
+
+.payment-schedule tbody tr:nth-child(even) {
+  background-color: #f8f9fa;  /* Màu nền hàng chẵn */
+  
+}
+
+/* Hiệu ứng hover cho dòng trong bảng */
+.payment-schedule tbody tr:hover {
+  background-color: #a1bfff;  /* Màu nền hover */
+  
+}
+
+.payment-schedule th {
+  font-weight: bold;
+  text-transform: uppercase;  /* Làm chữ tiêu đề in hoa */
+  text-align: center;
+  background-color:rgb(1, 33, 139);
+}
+
+.payment-schedule td {
+  color: #03040b;
+}
+.payment-schedule h2 {
+  text-align: center;
+  color: #001f45;
+  text-transform: uppercase;  
+
+}
+
+Modal hiển thị bảng trả góp
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(180, 175, 175);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 80%;
+  max-height: 80%;
+  overflow: auto;
+  
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+
+/* Nút Download Excel và Đóng Modal */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+
+.download-button, .close-button {
+  margin-bottom: 12px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px; /* Kích thước chữ nhỏ hơn */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 15%; /* Chiều rộng ngang nhau */
+  text-align: center; /* Căn giữa chữ */
+}
+
+.download-button:hover {
+  background-color: #218838;
+}
+
+.close-button {
+  margin-bottom: 12px;
+  background-color: #dc3545;
+}
+
+.close-button:hover {
+  background-color: #c82333;
+}
