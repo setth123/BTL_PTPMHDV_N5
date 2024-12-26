@@ -1,6 +1,12 @@
 async function fetchData(url, options = {}) {
     try {
-        const response = await fetch(url, options);
+        // const response = await fetch(url, options);
+        const response = await fetch(url,{
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization":`Bearer ${localStorage.getItem('adminToken')}`
+              },
+        });
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
         }

@@ -9,7 +9,8 @@ const CarSchema=new mongoose.Schema({
         type:String,
     },
     viewed:{
-        type:Number
+        type:Number,
+        default:0,
     }
 })
 const Car=mongoose.model('Car',CarSchema);

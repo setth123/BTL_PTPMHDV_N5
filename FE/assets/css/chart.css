@@ -24,3 +24,67 @@
     background-color: #ffffff;
     border-radius: 8px;
 }
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Giảm khoảng cách giữa các phần tử */
+    justify-content: center;
+    width: 100%;
+}
+.controls div {
+    font-size: 0.9rem; /* Giảm kích thước chữ */
+    font-weight: bold;
+    color: #0d47a1;
+}
+#select1, #submitc {
+    font-size: 0.9rem; /* Giảm kích thước chữ trong các ô chọn */
+    padding: 6px 8px; /* Giảm padding */
+    border: 2px solid #0d47a1;
+    border-radius: 5px;
+    transition: 0.3s;
+    background-color: #ffffff;
+}
+#select1:hover, #submitc1:hover {
+    background-color: rgb(252, 252, 252); /* Màu xanh da trời khi hover */
+    border-color:#ffffff; /* Thay đổi border thành màu xanh đậm hơn */
+    color: blue; /* Chữ sẽ chuyển thành màu trắng */
+}
+#submitc1 {
+    background-color: #0d47a1;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px; /* Giảm padding của nút */
+    font-weight: bold;
+}
+#submitc1:hover {
+    background-color: #bbdefb; /* Màu xanh đậm hơn khi hover */
+}
+#chart1 {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
